@@ -1,0 +1,10 @@
+[project]
+name = "pos-t2-aula-django"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "djangorestframework>=3.17.1",
+    "drf-yasg>=1.21.15",
+]
