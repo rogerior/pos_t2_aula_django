@@ -7,11 +7,18 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 
 class EmpresaViewSet(viewsets.ModelViewSet):
     queryset = Empresa.objects.all()
     serializer_class = EmpresaSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['nome', 'telefone']
+    search_fields = ['nome', 'telefone']
+    ordering_fields = ['id', 'nome', 'telefone']
+    ordering = ['id']
 
 
 @api_view(['POST'])
