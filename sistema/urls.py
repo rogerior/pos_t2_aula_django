@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
-from api.views import EmpresaViewSet
+from api.views import EmpresaViewSet, soma_view, soma_formato2, SomaFormato2View
 from rest_framework import routers
 
 from django.urls import re_path
@@ -32,4 +32,7 @@ urlpatterns = [
     path('swagger.<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('soma/<int:numero1>/<int:numero2>/', soma_view, name='soma_v1'),
+    path('soma/v2/', soma_formato2, name='soma_v2'),
+    path('soma/v3/', SomaFormato2View.as_view(), name='soma_v3'),
 ]
